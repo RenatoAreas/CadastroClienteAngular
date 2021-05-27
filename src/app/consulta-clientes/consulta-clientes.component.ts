@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-consulta-clientes',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultaClientesComponent implements OnInit {
 
-  constructor() { }
+  listagemClientes: any = [];
 
-  ngOnInit(): void {
+  constructor(private httpClient:HttpClient) { }
+
+  ngOnInit() : void{
+    this.consultarClientes();
+  }
+
+  consultarClientes() : void{
+    this.httpClient.get(environment.api_clientes)
+    .subscribe(
+      (data) => {
+        this.listagemClientes = data;
+      }, 
+
+      e => {
+        console.log(e);
+      }
+    );
   }
 
 }
