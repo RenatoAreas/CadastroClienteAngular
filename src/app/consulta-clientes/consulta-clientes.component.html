@@ -1,0 +1,130 @@
+<h5>Consulta de Clientes</h5>
+<p>
+    Listagem de clientes cadastrados no sistema.
+</p>
+
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Nome do Cliente</th>
+            <th>Email</th>
+            <th>CPF</th>
+            <th>Operações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button class="btn btn-primary btn-sm" data-bs-target= "#janela_edicao" data-bs-toggle="modal">
+                    Editar     
+                </button>
+                &nbsp;
+                <button class="btn btn-danger btn-sm" data-bs-target="#janela_exclusao" data-bs-toggle="modal">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                Quantidade de clientes: 0
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<!-- Modal Edição-->
+
+<div id="janela_edicao" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="text-white">Editar Cliente</h5>
+            </div>
+            <div class="modal-body">
+
+                <p>
+                    Utilize o formulário abaixo para editar 
+                    os dados do cliente.
+                </p>
+
+                <form autocomplete="off">
+
+                    <label>Nome do Cliente:</label>
+                    <input type="text" class="form-control" 
+                           placeholder="Ex: João da Silva" />
+                    <br />
+
+                    <label>Endereço de Email:</label>
+                    <input type="text" class="form-control" 
+                           placeholder="Ex: joaodasilva@gmail.com" />
+                    <br />
+
+                    <label>CPF (Somente números):</label>
+                    <input type="text" class="form-control" 
+                           placeholder="Ex: 12345678900" />
+                    <br />
+
+                    <input type="submit" class="btn btn-success" 
+                           value="Salvar Alterações" />
+                    &nbsp;
+                    <button class="btn btn-light" 
+                            data-bs-dismiss="modal">
+                        Fechar Janela
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Exclusão-->
+
+<div id="janela_exclusao" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="text-white">Excluir Cliente</h5>
+            </div>
+            <div class="modal-body">
+
+                <p>
+                    Deseja realmente excluir o cliente selecionado?
+                </p>
+
+                <hr/>
+                
+                <div>
+                    <label>Nome do Cliente: </label>
+                </div>
+                <div>
+                    <label>Endereço de Email: </label>
+                </div>
+                <div>
+                    <label>CPF: </label>
+                </div>
+
+                <hr/>
+
+                <button class="btn btn-danger">
+                    Confirmar Exclusão
+                </button>
+                &nbsp;
+                <button class="btn btn-light" data-bs-dismiss="modal">
+                    Fechar Janela
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
