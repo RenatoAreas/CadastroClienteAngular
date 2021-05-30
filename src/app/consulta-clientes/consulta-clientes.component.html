@@ -22,13 +22,15 @@
             <td>
                 <button class="btn btn-primary btn-sm" 
                     data-bs-target="#janela_edicao" 
-                    data-bs-toggle="modal">
+                    data-bs-toggle="modal"
+                    (click)="obterCliente(item.idCliente)">
                     Editar
                 </button>
                 &nbsp;
                 <button class="btn btn-danger btn-sm" 
                     data-bs-target="#janela_exclusao" 
-                    data-bs-toggle="modal">
+                    data-bs-toggle="modal"
+                    (click)="obterCliente(item.idCliente)">
                     Excluir
                 </button>
             </td>
@@ -60,20 +62,28 @@
                     os dados do cliente.
                 </p>
 
-                <form autocomplete="off">
+                <form #formEdicao="ngForm" autocomplete="off">
+                    <input type="hidden" 
+                    name="idCliente"
+                     [(ngModel)]="cliente.idCliente"/>
 
                     <label>Nome do Cliente:</label>
-                    <input type="text" class="form-control" 
+                    <input type="text" class="form-control"
+                        name="nome" [(ngModel)]="cliente.nome" 
                            placeholder="Ex: João da Silva" />
                     <br />
 
                     <label>Endereço de Email:</label>
                     <input type="text" class="form-control" 
+                        name="email" [(ngModel)]="cliente.email"
+                        readonly
                            placeholder="Ex: joaodasilva@gmail.com" />
                     <br />
 
                     <label>CPF (Somente números):</label>
-                    <input type="text" class="form-control" 
+                    <input type="text" class="form-control"
+                        name="cpf" [(ngModel)]="cliente.cpf"
+                        readonly 
                            placeholder="Ex: 12345678900" />
                     <br />
 
@@ -81,11 +91,19 @@
                            value="Salvar Alterações" />
                     &nbsp;
                     <button class="btn btn-light" 
-                            data-bs-dismiss="modal">
+                            data-bs-dismiss="modal"
+                            (click)="atualizarCliente(cliente.nome)">
                         Fechar Janela
                     </button>
 
+                    <br/>
+                    <br/>
+
+                    {{mensagem_edicao}}
                 </form>
+
+               
+
 
             </div>
         </div>
@@ -109,24 +127,36 @@
                 <hr/>
                 
                 <div>
-                    <label>Nome do Cliente: </label>
+                    <label>Nome do Cliente: 
+                        <strong>{{cliente.nome}}</strong>
+                    </label>
                 </div>
                 <div>
-                    <label>Endereço de Email: </label>
+                    <label>Endereço de Email: 
+                        <strong>{{cliente.email}}</strong>
+                    </label>
                 </div>
                 <div>
-                    <label>CPF: </label>
+                    <label>CPF: 
+                        <strong>{{cliente.cpf}}</strong>
+                    </label>
                 </div>
 
                 <hr/>
 
-                <button class="btn btn-danger">
+                <button class="btn btn-danger"
+                (click)="excluirCliente(cliente.idCliente)">
                     Confirmar Exclusão
                 </button>
                 &nbsp;
                 <button class="btn btn-light" data-bs-dismiss="modal">
                     Fechar Janela
                 </button>
+
+                <br/>
+                <br/>
+
+                <strong>{{mensagem_exclusao}}</strong>
 
             </div>
 
